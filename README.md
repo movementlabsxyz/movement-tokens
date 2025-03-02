@@ -2,84 +2,74 @@
 
 ## Description
 
-Repository for the Movement Ecosystem projects. This aims to facilitate every project building on the ecosystem to have an easy and maintainable way to publish their information.
+This guide provides instructions on how to list Movement Tokens within the Movement Ecosystem. It includes the required structure, fields, and formatting to ensure seamless integration with the ecosystem.
 
 ## How to Contribute
 
 ### Opening a Pull Request
 
-You can make any changes you want and open a pull request from an account with public record of interacting with related altered data or has had identity confirmed by official channels. The maintainers will review your changes and merge them if they are good to go.
-Refrain from altering unrelated files, as this will only make the review process longer.
-Refrain from adding any sensitive or speculative information to the repository.
+To add a new token listing:
+
+1. Fork the repository and create a new branch.
+2. Modify the token list JSON file, ensuring that new entries are added at the end.
+3. Ensure that images are stored in the appropriate directories and named after the project's slug.
+4. Open a pull request (PR) from an account with a verifiable history of interactions with the Movement Ecosystem.
+5. The maintainers will review your PR and merge it if it meets all criteria.
+
+Refrain from altering unrelated files, as this will only make the review process longer. Additionally, avoid adding any sensitive or speculative information to the repository.
 
 An example of a good pull request would be:
 
-- ecosystem.json modification. It should be added to the end of the json file.
+- **Token JSON Modification**: Ensure the new token entry follows the defined JSON structure and contains specific attributes.
+- **Logo**?: A logo is to be added to the `logo` folder if protocol choses to store the logo locally. The file should be named after the project's `Fungible Asset Address` (the token object key) and have a `.png` extension. Logo size should be **200x200px**.
+
+## Token Listing Structure
+
+Each token should follow the defined JSON structure and contain specific attributes that describe its details. Below is the expected structure for listing Movement Tokens:
 
 ```json
 {
-    "Movement": {
-        "description": "A description of my ecosystem",
-        "content": "Movement Labs is bringing Move execution to new networks and environments. Our flagship products are M1 and M2. We are also building the Movement SDK, Movement CLI, Fractal, Hyperlane messaging infrastructure, and the Movement Shared Sequencer to provide paramount interoperability between our Move-based environments and other networks.",
-        "url": "https://movementlabs.xyz",
-        "github": "https://github.com/movementlabsxyz",
-        "discord": "https://discord.gg/movementlabsxyz",
-        "telegram": "https://t.me/movementlabsxyz",
-        "twitter": "https://x.com/movementlabsxyz",
-        "contact": "https://t.me/franciskthomas",
-        "slug": "movement-labs",
-        "keywords": [
-            "movement",
-            "labs",
-            "ecosystem",
-            "blockchain",
-            "layer 1",
-            "layer 2"
-        ],
-        "categories": ["DeFi"],
-        "subcategories": [[
-            "Other"
-        ]],
-        "languages": ["Solidity", "Sui", "Aptos"],
-        "tags": [
-            "Hiring Now",
-            "Mainnet"
-        ]
+    "0xa": {
+        "chainId": 126,
+        "tokenAddress": "0x1::aptos_coin::AptosCoin",
+        "name": "MoveCoin",
+        "symbol": "MOVE",
+        "decimals": 8,
+        "bridge": null,
+        "logoUrl": "https://ipfs.io/ipfs/QmUv8RVdgo6cVQzh7kxerWLatDUt4rCEFoCTkCVLuMAa27",
+        "websiteUrl": "https://movementnetwork.xyz",
+        "coinGeckoId": "movement",
+        "coinMarketCapId": 32452
+    },
+    "0x357b0b74bc833e95a115ad22604854d6b0fca151cecd94111770e5d6ffc9dc2b": {
+        "chainId": 126,
+        "tokenAddress": null,
+        "name": "Ethereum Tether USD",
+        "symbol": "USDT.e",
+        "decimals": 6,
+        "bridge": null,
+        "logoUrl": "https://raw.githubusercontent.com/PanoraExchange/Aptos-Tokens/main/logos/USDT.svg",
+        "websiteUrl": "https://tether.to",
+        "coinGeckoId": "tether",
+        "coinMarketCapId": 825
     }
 }
 ```
 
-- logo, banner and hero image addition to /logo, /banner and /hero. The images should be named after the project's slug and have a .png extension. Logo is shown on the project's card and page, banner is shown on the project's card and hero is shown on the project page.
-- logo size: 200x200px
-- banner size: 400x400px
-- hero size: 1700x500px
+## Required Fields
 
-Object key is the name of the project formatted and cased according to how it should be displayed across the website and the value is an object with the following properties (? indicates optional):
+Each token entry must include the following fields (? indicates optional):
 
-- description: A brief description of the project. Shown on the project's card and page.
-- content: A more detailed description of the project. Shown on the project's page.
-- url: The website of the project
-- github?: The github repository of the project
-- discord?: The discord server of the project
-- telegram?: The telegram group of the project
-- twitter?: X account of the project
-- contact?: Direct contact link to a representative of the project
-- slug: The preferred name of the project in lowercase, and hyphenated if necessary.
-  - IMPORTANT: This is the name that will be used to reference the project when generating a URL for the project's page, and retrieving the project's logo and banner image.
-- keywords?: An array of keywords that describe the project. This will be used to help users find the project. Maximum of 5 keywords.
-- categories: The categories of the project. This will be used to help users find the project.
-  - Available categories: "DeFi", "NFT", "Gaming", "Infrastructure", "Wallet", "Analytics", "Social", "Investor", "Other"
-- subcategories: An array of subcategories that describe the project. They must match your specified categories. This will be used to help users find the project.
-  - DeFi: "DEX", "Lending", "Derivatives", "Payments", "RWA", "Insurance", "Perpetuals","Liquidation", "Stablecoin", "Yield Aggregator", "Swap Aggregator", "LST", "Other"
-  - NFT: "Marketplace", "Gaming", "DAO", "PFP", "Metaverse", "Art", "Music", "Collectibles", "Other"
-  - Gaming: "Play to Earn", "Play and Earn", "Gaming Focused", "NFT", "DAO", "Metaverse", "Marketplace", "Other"
-  - Infrastructure: "Layer 1", "Layer 2", "Oracles", "Bridges", "Scalability", "Privacy", "Other"
-  - Wallet: "Extension", "Mobile", "Hardware", "Other"
-  - Analytics: "Data", "Charts", "Magazine", "Content Creator", "Other"
-  - Social: "DAO", "Community", "Content Creator", "Marketing", "Education", "Hackathon", "Other"
-  - Investors: "VC", "Angel", "Incubator", "Accelerator", "Other"
-  - Other:
-- languages?: The main or closest languages to the project's smart contracts or supported languages.
-  - Available languages: "Solidity", "Rust", "SuiMove", "AptosMove"
-- tags?: An array of tags that describe the project. Tags are not selectable.
-  - Available tags: "Hiring Now", "Bounty", "Mainnet", "Testnet", "Devnet"
+- Object key is the **Fungible Asset Address**. Not case sensitive.
+- **chainId**: The identifier for the blockchain where the token exists. Movement chain id is 126.
+- **tokenAddress**: The smart contract address of the token. If not applicable, this field can be `null`.
+- **name**: The official name of the token.
+- **symbol**: The ticker symbol of the token.
+- **decimals**: The number of decimal places the token supports.
+- **bridge**?: Information about the bridge if the token is cross-chain; can be `null` if not applicable.
+- **logoUrl**: A direct link to the token's logo.
+  - Can be a raw GitHub link, an IPFS link, or stored in a local folder.
+  - For IPFS storage, we recommend pinning the logo using [Thirdweb's guide](https://portal.thirdweb.com/infrastructure/storage/how-to-use-storage/upload-files-to-ipfs).
+- **websiteUrl**: The official website for the token project.
+- **coinGeckoId**?: The identifier used by CoinGecko to fetch the token's price.
+- **coinMarketCapId**?: The identifier used by CoinMarketCap to fetch the token's price. Can also be found as UCID.
