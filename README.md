@@ -73,3 +73,7 @@ Each token entry must include the following fields (? indicates optional):
 - **websiteUrl**: The official website for the token project.
 - **coinGeckoId**?: The identifier used by CoinGecko to fetch the token's price.
 - **coinMarketCapId**?: The identifier used by CoinMarketCap to fetch the token's price. Can also be found as UCID.
+
+### Price Fetching
+
+If either coinGeckoId or coinMarketCapId are present, it enables price fetching to be displayed across the infrastructure, dapps and explorers. Else, price will not be displayed.
